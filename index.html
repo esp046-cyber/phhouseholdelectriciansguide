@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PH Electricians Guide 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            color: #333;
+            overflow-x: hidden;
+            padding: 1%;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 12px 1%;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 0.75em;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f5f5f5;
+            border-bottom: 2px solid #ddd;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: 80px;
+            padding: 10px 8px;
+            text-align: center;
+            background: #e8e8e8;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+            border-right: 1px solid #ddd;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab.active {
+            background: white;
+            color: #ff6b35;
+            border-bottom: 3px solid #ff6b35;
+        }
+
+        .content {
+            padding: 1%;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-card {
+            background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
+            border-left: 4px solid #ff6b35;
+            padding: 12px 1%;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .guide-card h3 {
+            color: #ff6b35;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .guide-card h3::before {
+            content: '⚡';
+            font-size: 1.1em;
+        }
+
+        .step {
+            background: white;
+            padding: 10px 1%;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff6b35;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2d5a7b;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 0.8em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 1%;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .warning::before {
+            content: '⚠️ WARNING: ';
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .safety {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px 1%;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .safety::before {
+            content: '✓ SAFETY: ';
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 12px 1%;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #2d5a7b;
+            font-size: 0.85em;
+        }
+
+        .skill-level {
+            background: #ff6b35;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+
+        .skill-desc {
+            font-size: 0.8em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tool-item {
+            background: linear-gradient(135deg, #2d5a7b 0%, #1e3a5f 100%);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.75em;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .code-ref {
+            background: #e7f3ff;
+            border-left: 4px solid #2d5a7b;
+            padding: 10px 1%;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .code-ref strong {
+            color: #1e3a5f;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .quick-ref {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-ref-item {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 0.75em;
+        }
+
+        .quick-ref-value {
+            font-weight: bold;
+            color: #ff6b35;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .collapsible {
+            background: #f8f9fa;
+            padding: 10px 1%;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #2d5a7b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+
+        .collapsible.active::after {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.active {
+            max-height: 1000px;
+        }
+
+        .checklist {
+            background: white;
+            padding: 10px 1%;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .checklist-item {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item::before {
+            content: '☐';
+            color: #ff6b35;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e55a2b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ PH Electricians Guide</h1>
+            <p>Professional Household Electrical Standards 2026</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-section="instructions">Instructions</button>
+            <button class="tab" data-section="stepbystep">Step-by-Step</button>
+            <button class="tab" data-section="skills">Skills</button>
+            <button class="tab" data-section="safety">Safety</button>
+            <button class="tab" data-section="tools">Tools</button>
+        </div>
+
+        <div class="content">
+            <!-- INSTRUCTIONS SECTION -->
+            <div id="instructions" class="section active">
+                <div class="guide-card">
+                    <h3>Philippine Electrical Code (PEC) Compliance</h3>
+                    <div class="code-ref">
+                        <strong>Latest Edition: PEC 2023</strong>
+                        All residential installations must comply with the Philippine Electrical Code as adopted by the Institute of Integrated Electrical Engineers of the Philippines (IIEE).
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Voltage Standards in PH</h3>
+                    <div class="quick-ref">
+                        <div class="quick-ref-item">
+                            <span class="quick-ref-value">220V</span>
+                            Standard Voltage
+                        </div>
+                        <div class="quick-ref-item">
+                            <span class="quick-ref-value">60Hz</span>
+                            Frequency
+                        </div>
+                        <div class="quick-ref-item">
+                            <span class="quick-ref-value">15-20A</span>
+                            Typical Circuit
+                        </div>
+                        <div class="quick-ref-item">
+                            <span class="quick-ref-value">Type A/B</span>
+                            Plug Types
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Required Permits & Documentation</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">Electrical Permit from Local Government Unit (LGU)</div>
+                        <div class="checklist-item">PRC Licensed Electrical Engineer supervision for major works</div>
+                        <div class="checklist-item">Registered Master Electrician (RME) for installations</div>
+                        <div class="checklist-item">Certificate of Final Electrical Inspection (CFEI)</div>
+                        <div class="checklist-item">Meralco/Utility connection approval</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Common Household Circuits</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">Lighting Circuits (15A)</div>
+                        <div class="step-desc">General illumination, ceiling lights, wall switches. Wire: 2.0mm² THHN/THWN</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Convenience Outlets (20A)</div>
+                        <div class="step-desc">General purpose outlets. Wire: 3.5mm² THHN/THWN. Maximum 10 outlets per circuit</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Aircon Circuits (20-30A)</div>
+                        <div class="step-desc">Dedicated circuits for AC units. Wire: 3.5-5.5mm² depending on load</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">Heavy Appliances (30-50A)</div>
+                        <div class="step-desc">Electric stove, water heater. Wire: 8.0-14mm² with proper circuit breaker</div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    Never work on live circuits without proper isolation. Always verify power is OFF using a voltage tester before beginning work.
+                </div>
+            </div>
+
+            <!-- STEP-BY-STEP SECTION -->
+            <div id="stepbystep" class="section">
+                <div class="guide-card">
+                    <h3>🔰 Beginner Fundamentals</h3>
+                    <p style="font-size: 0.8em; color: #666; margin-bottom: 10px;">Master these basics before attempting any electrical work</p>
+                </div>
+
+                <div class="collapsible">
+                    How to Use a Multimeter Properly
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="safety">
+                            Always start with highest range setting. Never measure current on a live circuit without proper training. One wrong probe placement can destroy your meter or cause injury.
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-title">Measuring AC Voltage (Most Common)</div>
+                            <div class="step-desc">Set dial to AC voltage (V~). Insert black probe into COM port, red probe into VΩ port. Touch probes to hot and neutral (220V expected). Display shows voltage. Never touch metal probe tips while measuring.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Testing Continuity (Wire Integrity)</div>
+                            <div class="step-desc">POWER MUST BE OFF. Set to continuity mode ())) symbol). Touch probes together - meter beeps. Touch probes to both ends of wire - beep means wire is continuous/good. No beep means break/open circuit.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Measuring Resistance (Ohms)</div>
+                            <div class="step-desc">POWER MUST BE OFF. Set to Ω (ohms). Start at highest range. Touch probes to component. Lower range if reading shows "1" or "OL". Good wire shows near 0Ω. Infinite resistance means open circuit.</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Testing Current (ADVANCED - Use Clamp Meter Instead)</div>
+                            <div class="step-desc">AVOID unless experienced. Requires breaking circuit. Set to A (amps), insert probes into A terminals. Connect meter IN SERIES with load. Start with highest range (10A). Wrong connection can blow fuse or damage meter.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Common Mistakes to Avoid</div>
+                            <div class="step-desc">❌ Measuring voltage with probes in A terminals (shorts meter). ❌ Measuring resistance on live circuit (destroys meter). ❌ Touching probe tips while measuring voltage (shock). ❌ Using wrong range (inaccurate reading). ✅ Always verify meter working on known voltage first.</div>
+                        </div>
+                        <div class="warning">
+                            If measuring voltage and display shows nothing or acts erratic, STOP. Check probe connections, battery, and fuse. A faulty meter is dangerous.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    How to Identify Wire Types & Gauges
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="step" data-step="1">
+                            <div class="step-title">Reading Wire Markings (Printed on Jacket)</div>
+                            <div class="step-desc">Look for: "THHN 12 AWG 600V" or similar. THHN/THWN = insulation type. 12 AWG = wire size. 600V = voltage rating. May also show "90°C" (temperature rating). PH common: THHN, THWN, TW for building wire.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Measuring Unknown Wire Gauge</div>
+                            <div class="step-desc">Strip 10mm of insulation. Use wire stripper gauge holes. Insert bare wire into holes until tight fit. That hole number = wire gauge. Or use digital caliper: 2.05mm = 14 AWG, 3.31mm = 12 AWG, 5.26mm = 10 AWG.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Philippine Color Coding (Standard Practice)</div>
+                            <div class="step-desc">⚡ HOT/LIVE: Black, Red, Blue (any color except white/green). ⚪ NEUTRAL: White or Gray only. 🟢 GROUND: Green, Green/Yellow stripe, or Bare copper. Note: Old wiring may not follow this - always test!</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Solid vs Stranded Wire</div>
+                            <div class="step-desc">SOLID (single thick conductor): Used in permanent installations, walls, conduit. Stiffer, easier to push through conduit. STRANDED (many thin strands): Used in cords, flexible applications, vibration areas. More flexible but harder to terminate.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Common PH Wire Sizes & Uses</div>
+                            <div class="step-desc">2.0mm² (14 AWG): Lighting circuits, 15A max. 3.5mm² (12 AWG): General outlets, 20A max. 5.5mm² (10 AWG): Aircon, heavy appliances, 30A. 8.0mm² (8 AWG): Electric range, large AC, 40A. 14mm² (6 AWG): Main feeds, 50-60A.</div>
+                        </div>
+                        <div class="code-ref">
+                            <strong>PEC Requirement:</strong>
+                            Minimum 2.0mm² (14 AWG) for branch circuits. Never use speaker wire, lamp cord, or undersized wire for permanent installations. Always check ampacity tables in PEC for exact requirements.
+                        </div>
+                        <div class="warning">
+                            Never assume wire color = function in old installations. Always test with multimeter to verify hot, neutral, and ground before working.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    Basic Wire Connections & Splicing
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="safety">
+                            POWER OFF and verified before making any connections. Poor connections cause 80% of electrical fires. Take your time and do it right.
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-title">Proper Wire Nut Installation</div>
+                            <div class="step-desc">Strip wires same length (12-15mm). Hold wires parallel, twist clockwise 1-2 turns with pliers (pre-twist). Select correct size nut (must fit wire bundle). Thread nut clockwise onto wires, twisting firmly until tight. Tug each wire - should not pull out. No bare copper visible below nut.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Creating Pigtail Connections</div>
+                            <div class="step-desc">When multiple wires connect to one terminal: Cut 150mm piece of same gauge wire. Strip 15mm one end, 10mm other end. Group all wires (including pigtail) together. Twist with wire nut. Connect pigtail's 10mm end to device terminal. This prevents strain on device.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Wire-to-Screw Terminal (CRITICAL TECHNIQUE)</div>
+                            <div class="step-desc">Strip exactly 10mm (not more). Form clockwise hook using needle-nose pliers. Loop should be 3/4 circle. Place loop under screw head going CLOCKWISE direction. Tighten screw - tightening pulls loop closed. No bare wire visible outside terminal. Test with gentle tug.</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Using Crimp Connectors</div>
+                            <div class="step-desc">Strip wire per connector specs (usually 10mm). Insert wire fully into connector until hitting stop. Use proper crimping tool (not pliers). Crimp firmly in center of barrel. Tug test - wire should not pull out. Use heat shrink or tape for insulation if not pre-insulated.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Inline Splice for Repairs</div>
+                            <div class="step-desc">Cut out damaged section. Strip 15mm on both ends. Overlap wires and twist together clockwise. Solder if possible (better connection). Cover with wire nut or crimp connector. Wrap with electrical tape. MUST be inside accessible junction box per code - no splices in walls!</div>
+                        </div>
+                        <div class="warning">
+                            NEVER use twist-on wire connectors for aluminum wire without proper compound and AL-rated connectors. Aluminum connections require special techniques to prevent fire hazards.
+                        </div>
+                        <div class="code-ref">
+                            <strong>PEC Splice Requirements:</strong>
+                            All splices must be in accessible junction boxes. No splices allowed inside walls, ceilings, or inaccessible spaces. Box must have cover. Splices must be mechanically and electrically secure.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>⚙️ Installation Procedures</h3>
+                    <p style="font-size: 0.8em; color: #666; margin-bottom: 10px;">Common residential installation tasks</p>
+                </div>
+
+                <div class="collapsible">
+                    Installing a Wall Outlet (Duplex Receptacle)
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="safety">
+                            Turn OFF circuit breaker and verify with voltage tester. Lock out panel if possible.
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-title">Prepare the Outlet Box</div>
+                            <div class="step-desc">Install utility box (2"x4" or 4"x4") at 300mm from floor level. Secure with proper anchors.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Run Wire to Box</div>
+                            <div class="step-desc">Use 3.5mm² THHN wire (black/hot, white/neutral, green/ground). Leave 150-200mm extra wire in box.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Strip Wire Ends</div>
+                            <div class="step-desc">Strip 10-15mm of insulation. Use wire stripper, not blade to avoid nicking copper.</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Connect Wires to Receptacle</div>
+                            <div class="step-desc">Hot (black) → brass screw, Neutral (white) → silver screw, Ground (green) → green screw. Clockwise loops.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Secure Receptacle</div>
+                            <div class="step-desc">Fold wires into box carefully. Screw receptacle to box ears. Install faceplate.</div>
+                        </div>
+                        <div class="step" data-step="6">
+                            <div class="step-title">Test Installation</div>
+                            <div class="step-desc">Turn ON breaker. Test with outlet tester or plug-in device. Check for proper grounding.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    Installing a Light Switch
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="safety">
+                            Ensure power is OFF at circuit breaker. Use non-contact voltage tester to verify.
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-title">Mount Switch Box</div>
+                            <div class="step-desc">Install at 1400mm height (standard). Ensure box is securely mounted and level.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Identify Wire Functions</div>
+                            <div class="step-desc">Line (power from panel), Load (to light), Neutral (if smart switch), Ground.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Connect Line Wire</div>
+                            <div class="step-desc">Connect hot wire from panel to common or LINE terminal (usually brass or marked).</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Connect Load Wire</div>
+                            <div class="step-desc">Connect wire going to light fixture to switched terminal on switch.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Secure and Test</div>
+                            <div class="step-desc">Pigtail grounds together. Mount switch, install plate. Restore power and test operation.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    Installing Circuit Breaker Panel
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="warning">
+                            This task requires PRC Licensed Electrical Engineer supervision and RME execution. Never attempt without proper credentials.
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-title">Coordinate with Utility</div>
+                            <div class="step-desc">Request disconnection from Meralco. Obtain approval for meter base and panel installation.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Mount Panel Enclosure</div>
+                            <div class="step-desc">Install at 1500-1800mm height. Ensure adequate clearance (min 1000mm in front, 200mm sides).</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Install Main Breaker</div>
+                            <div class="step-desc">Size appropriately for service (typically 60-100A residential). Connect to main lugs.</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Install Branch Breakers</div>
+                            <div class="step-desc">15A for lighting, 20A for outlets, 30-40A for aircon, sized accordingly for appliances.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Ground and Bond</div>
+                            <div class="step-desc">Connect ground bar to grounding electrode system. Bond neutral bar at main panel only.</div>
+                        </div>
+                        <div class="step" data-step="6">
+                            <div class="step-title">Label Circuits</div>
+                            <div class="step-desc">Clearly mark each breaker with location and load. Use permanent labels. Update as-built drawings.</div>
+                        </div>
+                        <div class="step" data-step="7">
+                            <div class="step-title">Inspection and Energization</div>
+                            <div class="step-desc">Schedule LGU electrical inspection. Obtain CFEI. Coordinate utility connection.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    Troubleshooting Tripped Breakers
+                </div>
+                <div class="collapsible-content">
+                    <div class="guide-card">
+                        <div class="step" data-step="1">
+                            <div class="step-title">Identify Affected Circuit</div>
+                            <div class="step-desc">Check panel for tripped breaker (handle in middle position or OFF). Note which circuit.</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-title">Unplug All Devices</div>
+                            <div class="step-desc">Disconnect all appliances and devices on the affected circuit.</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-title">Reset Breaker</div>
+                            <div class="step-desc">Push breaker fully OFF, then ON. If trips immediately, likely short circuit or ground fault.</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-title">Test Devices One by One</div>
+                            <div class="step-desc">Plug in devices individually. If breaker trips, faulty device identified.</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-title">Check for Overload</div>
+                            <div class="step-desc">Calculate total wattage. Ensure not exceeding circuit capacity (220V x Breaker Amps x 0.8).</div>
+                        </div>
+                        <div class="step" data-step="6">
+                            <div class="step-title">Inspect for Damage</div>
+                            <div class="step-desc">If persistent tripping, inspect outlets and wiring for damage. Call licensed electrician if needed.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILLS SECTION -->
+            <div id="skills" class="section">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Wire Stripping & Termination</span>
+                        <span class="skill-level">ESSENTIAL</span>
+                    </div>
+                    <div class="skill-desc">
+                        Properly remove insulation without nicking conductor. Create proper loops for screw terminals. Use crimp connectors correctly. Master both solid and stranded wire techniques.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Circuit Testing & Measurement</span>
+                        <span class="skill-level">ESSENTIAL</span>
+                    </div>
+                    <div class="skill-desc">
+                        Use multimeter to measure voltage, current, resistance. Test continuity. Identify hot, neutral, ground. Verify proper grounding. Detect open circuits and shorts.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Load Calculation</span>
+                        <span class="skill-level">REQUIRED</span>
+                    </div>
+                    <div class="skill-desc">
+                        Calculate circuit loads using P = V × I formula. Determine proper wire gauge for load. Size circuit breakers correctly. Plan panel capacity. Apply NEC/PEC demand factors.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Conduit Installation</span>
+                        <span class="skill-level">INTERMEDIATE</span>
+                    </div>
+                    <div class="skill-desc">
+                        Bend EMT/PVC conduit properly. Calculate conduit fill capacity. Install junction boxes correctly. Maintain proper support spacing. Create weatherproof outdoor installations.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Panel Installation & Modification</span>
+                        <span class="skill-level">ADVANCED</span>
+                    </div>
+                    <div class="skill-desc">
+                        Install main service panels. Add branch circuits. Balance panel loads. Upgrade service capacity. Properly bond and ground systems. Must have PRC-EE supervision.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Grounding & Bonding Systems</span>
+                        <span class="skill-level">ADVANCED</span>
+                    </div>
+                    <div class="skill-desc">
+                        Install ground rods properly (min 2.4m deep). Size grounding conductors. Bond metal components. Install GFCI protection. Create equipotential bonding for swimming pools.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Smart Home Integration</span>
+                        <span class="skill-level">EMERGING</span>
+                    </div>
+                    <div class="skill-desc">
+                        Install smart switches requiring neutral wires. Set up home automation systems. Configure wireless controls. Integrate with existing electrical systems. Future-proof installations.
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Solar PV Systems</span>
+                        <span class="skill-level">SPECIALIZED</span>
+                    </div>
+                    <div class="skill-desc">
+                        Install solar panels and inverters. Connect to grid (Meralco net metering). Size battery systems. Understand DC vs AC systems. Comply with solar-specific PEC requirements.
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Professional Development Path</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">Apprentice (0-2 years)</div>
+                        <div class="step-desc">Learn basic wiring, outlet/switch installation, simple repairs under supervision</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Journeyman (2-5 years)</div>
+                        <div class="step-desc">Independent residential work, circuit additions, panel work with supervision</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Registered Master Electrician</div>
+                        <div class="step-desc">Pass RME board exam. Can sign electrical plans. Supervise major installations</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">PRC Licensed Electrical Engineer</div>
+                        <div class="step-desc">4-year degree + board exam. Required for complex commercial and industrial work</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAFETY SECTION -->
+            <div id="safety" class="section">
+                <div class="guide-card">
+                    <h3>Personal Protective Equipment (PPE)</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">Insulated gloves (rated for voltage worked on)</div>
+                        <div class="checklist-item">Safety glasses with side shields</div>
+                        <div class="checklist-item">Rubber-soled shoes (non-conductive)</div>
+                        <div class="checklist-item">Hard hat for overhead work</div>
+                        <div class="checklist-item">Insulated tools with 1000V rating</div>
+                        <div class="checklist-item">Voltage tester (non-contact and contact type)</div>
+                        <div class="checklist-item">Fire extinguisher (Class C) nearby</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Lockout/Tagout Procedure</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">Identify Power Source</div>
+                        <div class="step-desc">Locate correct circuit breaker controlling work area</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Notify Affected Parties</div>
+                        <div class="step-desc">Inform household members work is being performed</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Turn OFF and Lock</div>
+                        <div class="step-desc">Switch breaker OFF. Use lock or tape to prevent accidental re-energization</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">Verify Zero Voltage</div>
+                        <div class="step-desc">Use voltage tester on ALL wires. Test hot-to-neutral, hot-to-ground, neutral-to-ground</div>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-title">Perform Work Safely</div>
+                        <div class="step-desc">Keep one hand in pocket when testing. Work methodically. Double-check connections</div>
+                    </div>
+                    <div class="step" data-step="6">
+                        <div class="step-title">Re-energize Properly</div>
+                        <div class="step-desc">Remove locks/tags. Turn ON breaker. Test circuit functionality. Verify proper operation</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Working in Wet Conditions</h3>
+                    <div class="warning">
+                        NEVER work on electrical systems during rain, in standing water, or with wet hands. Water drastically reduces electrical resistance and increases shock risk.
+                    </div>
+                    <div class="safety">
+                        Wait for dry conditions. Use GFCI protection. Wear rubber boots. Keep tools dry. If emergency repair needed, call qualified electrician.
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Electrical Shock Response</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">DO NOT Touch Victim</div>
+                        <div class="step-desc">If still in contact with electricity, touching them will shock you too</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Cut Power Source</div>
+                        <div class="step-desc">Turn OFF breaker or disconnect at main panel. Use non-conductive object to move victim if necessary</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Call Emergency Services</div>
+                        <div class="step-desc">Dial 911 or local emergency number immediately. Every second counts</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">Begin CPR if Trained</div>
+                        <div class="step-desc">Check breathing and pulse. Start chest compressions if no heartbeat. Continue until help arrives</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Arc Flash Hazards</h3>
+                    <div class="warning">
+                        Arc flash can cause severe burns, blindness, and death. Temperature can reach 35,000°F. Always assume energized equipment can arc.
+                    </div>
+                    <div class="checklist">
+                        <div class="checklist-item">Maintain proper working distance from energized parts</div>
+                        <div class="checklist-item">Wear arc-rated PPE for panel work (FR clothing)</div>
+                        <div class="checklist-item">Never use metallic rulers or tools near live circuits</div>
+                        <div class="checklist-item">Keep face away from panel when turning ON breakers</div>
+                        <div class="checklist-item">De-energize equipment before working whenever possible</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Fire Safety</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">Recognize Warning Signs</div>
+                        <div class="step-desc">Burning smell, discolored outlets, warm switches, flickering lights, buzzing sounds</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Cut Power Immediately</div>
+                        <div class="step-desc">Turn OFF circuit breaker. If fire visible, turn OFF main breaker</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Use Proper Extinguisher</div>
+                        <div class="step-desc">Class C (electrical fires) or ABC multi-purpose. NEVER use water on electrical fires</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">Evacuate if Necessary</div>
+                        <div class="step-desc">If fire spreads or power cannot be cut, evacuate immediately and call fire department</div>
+                    </div>
+                </div>
+
+                <div class="safety">
+                    Always work with a buddy for major electrical projects. Second person can call for help, operate breakers, or provide emergency assistance if needed.
+                </div>
+            </div>
+
+            <!-- TOOLS SECTION -->
+            <div id="tools" class="section">
+                <div class="guide-card">
+                    <h3>Essential Hand Tools</h3>
+                    <div class="tool-list">
+                        <div class="tool-item">Wire Stripper<br>10-20 AWG</div>
+                        <div class="tool-item">Lineman's Pliers<br>8-9 inch</div>
+                        <div class="tool-item">Needle-Nose Pliers<br>Long reach</div>
+                        <div class="tool-item">Screwdrivers<br>Insulated 1000V</div>
+                        <div class="tool-item">Wire Cutters<br>Diagonal cutting</div>
+                        <div class="tool-item">Utility Knife<br>Retractable blade</div>
+                        <div class="tool-item">Crimping Tool<br>Multi-size</div>
+                        <div class="tool-item">Adjustable Wrench<br>8-10 inch</div>
+                        <div class="tool-item">Cable Ripper<br>Romex stripper</div>
+                        <div class="tool-item">Fish Tape<br>25-50 ft steel</div>
+                        <div class="tool-item">Level<br>Torpedo or laser</div>
+                        <div class="tool-item">Hacksaw<br>For conduit</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Testing & Measurement Tools</h3>
+                    <div class="tool-list">
+                        <div class="tool-item">Digital Multimeter<br>True RMS</div>
+                        <div class="tool-item">Voltage Tester<br>Non-contact</div>
+                        <div class="tool-item">Outlet Tester<br>3-prong plugin</div>
+                        <div class="tool-item">Clamp Meter<br>AC current</div>
+                        <div class="tool-item">Circuit Tracer<br>Wire locator</div>
+                        <div class="tool-item">Continuity Tester<br>Audible beep</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Power Tools</h3>
+                    <div class="tool-list">
+                        <div class="tool-item">Cordless Drill<br>18V minimum</div>
+                        <div class="tool-item">Hammer Drill<br>For masonry</div>
+                        <div class="tool-item">Reciprocating Saw<br>Demo work</div>
+                        <div class="tool-item">Hole Saw Kit<br>3/4" to 2-1/2"</div>
+                        <div class="tool-item">Conduit Bender<br>1/2" & 3/4" EMT</div>
+                        <div class="tool-item">Wire Puller<br>Tugger for large pulls</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Specialized Equipment</h3>
+                    <div class="tool-list">
+                        <div class="tool-item">Knockout Punch<br>Panel holes</div>
+                        <div class="tool-item">Pipe Threader<br>For rigid conduit</div>
+                        <div class="tool-item">Cable Puller<br>Wire grip</div>
+                        <div class="tool-item">Torque Screwdriver<br>Precise tightening</div>
+                        <div class="tool-item">Thermal Camera<br>Hot spot detection</div>
+                        <div class="tool-item">Ground Tester<br>Earth resistance</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Consumables & Supplies</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">Wire nuts (various sizes: orange, yellow, red, blue)</div>
+                        <div class="checklist-item">Electrical tape (3M Super 33+, black and colors)</div>
+                        <div class="checklist-item">Cable ties/zip ties (UV resistant for outdoor)</div>
+                        <div class="checklist-item">Wire staples/clips (appropriate for wire gauge)</div>
+                        <div class="checklist-item">Junction boxes (utility boxes, handy boxes, weatherproof)</div>
+                        <div class="checklist-item">Conduit connectors and couplings</div>
+                        <div class="checklist-item">Strut channel and hardware (for commercial)</div>
+                        <div class="checklist-item">Anti-oxidant compound (for aluminum connections)</div>
+                        <div class="checklist-item">Lubricant (wire pulling compound)</div>
+                        <div class="checklist-item">Markers/labels (permanent, weatherproof)</div>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Tool Maintenance</h3>
+                    <div class="step" data-step="1">
+                        <div class="step-title">Inspect Before Each Use</div>
+                        <div class="step-desc">Check insulation integrity. Look for cracks, exposed metal. Test voltage testers daily</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-title">Clean Regularly</div>
+                        <div class="step-desc">Wipe tools after use. Remove dust and debris. Keep cutting edges sharp</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-title">Calibrate Test Equipment</div>
+                        <div class="step-desc">Verify multimeter accuracy annually. Test against known voltage source. Replace batteries</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-title">Store Properly</div>
+                        <div class="step-desc">Keep tools dry. Organized toolbox or bag. Separate insulated from regular tools</div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    Replace any tool with damaged insulation immediately. Compromised insulation can conduct electricity and cause serious injury or death.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab navigation
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                
+                // Remove active class from all tabs and sections
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding section
+                this.classList.add('active');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible').forEach(collapsible => {
+            collapsible.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+
+        // Prevent zoom on double tap for mobile
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
